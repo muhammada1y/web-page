@@ -1,0 +1,22 @@
+name: Update cms/master
+
+on:
+  push:
+    branches:
+      - DEV
+
+jobs:
+  update-cms-DEV:
+    name: Merge DEV into release after a PR is merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge
+        with:
+          github_token: ${{ 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 }}
+          source: 'DEV'
+          target: 'PROD'
+      
