@@ -1,41 +1,27 @@
-name: Update cms/DEV
+name: Merge DEV into prod
 
 on:
   push:
     branches:
-      - "DEV/"
-      
+      - DEV
+
 jobs:
-  update-cms-DEV:
-    name: Merge DEV into release after a PR is merged
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: merge
-        uses: mtanzi/action-automerge@v1
-        
-        with:
-      
-          source: 'DEV'
-          target: 'PROD'
+    - name: Checkout code
+      uses: actions/checkout@v2
 
+    - name: Test changes
+      run: |
+        echo "Running tests"
+        # Run tests here
 
-
-# name: Update scm/DEV       
-#  on:
-#   push:
-#     branches:
-#       - "DEV/*"
-# jobs:
-#   merge-branch:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: everlytic/branch-merge@1.1.2
-#         with:
-#           github_token: ${{ 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}}
-#           source_ref: ${{ PROD }}
-#           target_branch: 'PROD'
-#           commit_message_template: '[Automated] Merged {DEV} into target {PROD}'
+    - name: Merge dev into prod
+      if: success()
+      run: |
+        git checkout PROD
+        git merge DEV
+        git push origin PROD
       
