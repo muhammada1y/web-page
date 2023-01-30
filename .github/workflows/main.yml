@@ -16,7 +16,7 @@ jobs:
         uses: mtanzi/action-automerge@v1
         id: merge
         with:
-          github_token: ${{ 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 }}
+          github_token: ${{ github.token }}
           source: 'DEV'
           target: 'PROD'
       
