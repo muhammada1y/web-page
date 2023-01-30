@@ -1,4 +1,4 @@
-name: Update cms/master
+name: Update cms/DEV
 
 on:
   push:
