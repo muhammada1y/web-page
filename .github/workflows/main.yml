@@ -4,11 +4,7 @@ on:
   push:
     branches:
       - DEV
-      - release/*
-  pull_request:
-    branches:
-    - DEV
-
+      
 jobs:
   update-cms-DEV:
     name: Merge DEV into release after a PR is merged
