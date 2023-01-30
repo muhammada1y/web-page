@@ -1,4 +1,4 @@
-name: Merge DEV into prod
+name: Update cms/DEV
 
 on:
   push:
@@ -6,22 +6,17 @@ on:
       - DEV
 
 jobs:
-  build:
+  update-cms-DEV:
+    name: Merge DEV into release after a PR is merged
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Test changes
-      run: |
-        echo "Running tests"
-        # Run tests here
-
-    - name: Merge dev into prod
-      if: success()
-      run: |
-        git checkout PROD
-        git merge DEV
-        git push origin PROD
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge
+        with:
+          github_token: ${{ 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 }}
+          source: 'DEV'
+          target: 'PROD'
       
