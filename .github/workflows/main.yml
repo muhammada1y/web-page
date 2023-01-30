@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - DEV
+      - release/*
+  pull_request:
+    branches:
+    - DEV
 
 jobs:
   update-cms-DEV:
@@ -16,7 +20,7 @@ jobs:
         uses: mtanzi/action-automerge@v1
         id: merge
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ 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 }}
           source: 'DEV'
           target: 'PROD'
       
