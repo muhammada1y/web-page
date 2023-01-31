@@ -40,4 +40,4 @@ jobs:
 
 #     - name: Push changes to PROD
 #       run: |
-#         git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/furqanalihunzai1/appdocker.git HEAD:PROD
+#         git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/muhammada1y/web-page .git HEAD:PROD
