@@ -11,4 +11,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8008
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
